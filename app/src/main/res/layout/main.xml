@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <LinearLayout
+        android:id="@+id/top_area"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:orientation="horizontal"
+        android:visibility="gone" >
+
+        <EditText
+            android:id="@+id/search_text"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2"
+            android:hint="Input app name"
+            android:padding="2dip"/>
+
+        <Button
+            android:id="@+id/search_button"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dip"
+            android:layout_weight="0.7"
+            android:padding="2dip"
+            android:text="Search" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/bottom_area"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/share_button"
+            android:layout_width="fill_parent"
+            android:layout_height="50dip"
+            android:layout_marginRight="2dip"
+            android:layout_weight="0.6"
+            android:text="Share" />
+
+        <Button
+            android:id="@+id/export_button"
+            android:layout_width="fill_parent"
+            android:layout_height="50dip"
+            android:layout_marginRight="2dip"
+            android:layout_weight="0.6"
+            android:text="Export" />
+
+        <ImageButton
+            android:id="@+id/setting_button"
+            android:layout_width="fill_parent"
+            android:layout_height="50dip"
+            android:layout_marginLeft="2dip"
+            android:layout_weight="0.8"
+            android:src="@android:drawable/ic_menu_more" />
+    </LinearLayout>
+
+    <ListView
+        android:id="@android:id/list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:textFilterEnabled="true"
+        android:layout_above="@id/bottom_area"
+        android:layout_below="@id/top_area" />
+
+    <TextView
+        android:id="@android:id/empty"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center"
+        android:textSize="18sp"
+        android:text="No APP"/>
+
+</RelativeLayout>

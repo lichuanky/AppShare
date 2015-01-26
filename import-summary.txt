@@ -1,0 +1,110 @@
+ECLIPSE ANDROID PROJECT IMPORT SUMMARY
+======================================
+
+Ignored Files:
+--------------
+The following files were *not* copied into the new Gradle project; you
+should evaluate whether these are still needed in your project and if
+so manually move them:
+
+* .idea/
+* .idea/.name
+* .idea/compiler.xml
+* .idea/copyright/
+* .idea/copyright/profiles_settings.xml
+* .idea/encodings.xml
+* .idea/misc.xml
+* .idea/modules.xml
+* .idea/scopes/
+* .idea/scopes/scope_settings.xml
+* .idea/vcs.xml
+* .idea/workspace.xml
+* app/
+* app/build.gradle
+* app/src/
+* app/src/main/
+* app/src/main/AndroidManifest.xml
+* app/src/main/java/
+* app/src/main/java/com/
+* app/src/main/java/com/jeffry/
+* app/src/main/java/com/jeffry/appshare/
+* app/src/main/java/com/jeffry/appshare/AboutActivity.java
+* app/src/main/java/com/jeffry/appshare/ApkFileManager.java
+* app/src/main/java/com/jeffry/appshare/AppShareActivity.java
+* app/src/main/java/com/jeffry/appshare/DirectorySelectActivity.java
+* app/src/main/java/com/jeffry/appshare/SettingActivity.java
+* app/src/main/java/com/jeffry/appshare/adapter/
+* app/src/main/java/com/jeffry/appshare/adapter/AppAdapter.java
+* app/src/main/java/com/jeffry/appshare/adapter/AppListAdapter.java
+* app/src/main/java/com/jeffry/appshare/model/
+* app/src/main/java/com/jeffry/appshare/model/AppInfoData.java
+* app/src/main/java/com/jeffry/appshare/util/
+* app/src/main/java/com/jeffry/appshare/util/Utils.java
+* app/src/main/res/
+* app/src/main/res/drawable-hdpi/
+* app/src/main/res/drawable-hdpi/app_icon.png
+* app/src/main/res/drawable-hdpi/ic_launcher.png
+* app/src/main/res/drawable-hdpi/ic_launcher_pure.png
+* app/src/main/res/drawable-ldpi/
+* app/src/main/res/drawable-ldpi/ic_launcher.png
+* app/src/main/res/drawable-mdpi/
+* app/src/main/res/drawable-mdpi/app_icon.png
+* app/src/main/res/drawable-mdpi/ic_launcher.png
+* app/src/main/res/drawable-mdpi/ic_menu_agenda.png
+* app/src/main/res/drawable-mdpi/ic_menu_clear_playlist.png
+* app/src/main/res/drawable-mdpi/ic_menu_delete.png
+* app/src/main/res/drawable-mdpi/ic_menu_help.png
+* app/src/main/res/drawable-mdpi/ic_menu_info_details.png
+* app/src/main/res/drawable-mdpi/ic_menu_more.png
+* app/src/main/res/drawable-mdpi/ic_menu_preferences.png
+* app/src/main/res/drawable-mdpi/ic_menu_refresh.png
+* app/src/main/res/drawable-mdpi/ic_menu_share.png
+* app/src/main/res/drawable-mdpi/ic_menu_sort_alphabetically.png
+* app/src/main/res/drawable-mdpi/ic_menu_sort_by_size.png
+* app/src/main/res/drawable-mdpi/phone.png
+* app/src/main/res/drawable-mdpi/sdcard.png
+* app/src/main/res/layout/
+* app/src/main/res/layout/apk_file_manager.xml
+* app/src/main/res/layout/directory_select.xml
+* app/src/main/res/layout/list_item.xml
+* app/src/main/res/layout/main.xml
+* app/src/main/res/values/
+* app/src/main/res/values/arrays.xml
+* app/src/main/res/values/colors.xml
+* app/src/main/res/values/strings.xml
+* app/src/main/res/xml/
+* app/src/main/res/xml/setting.xml
+* build.gradle
+* gradle/
+* gradle/wrapper/
+* gradle/wrapper/gradle-wrapper.jar
+* gradle/wrapper/gradle-wrapper.properties
+* gradlew
+* gradlew.bat
+* proguard.cfg
+* settings.gradle
+
+Moved Files:
+------------
+Android Gradle projects use a different directory structure than ADT
+Eclipse projects. Here's how the projects were restructured:
+
+* AndroidManifest.xml => app/src/main/AndroidManifest.xml
+* assets/ => app/src/main/assets/
+* res/ => app/src/main/res/
+* src/ => app/src/main/java/
+
+Next Steps:
+-----------
+You can now build the project. The Gradle project needs network
+connectivity to download dependencies.
+
+Bugs:
+-----
+If for some reason your project does not build, and you determine that
+it is due to a bug or limitation of the Eclipse to Gradle importer,
+please file a bug at http://b.android.com with category
+Component-Tools.
+
+(This import summary is for your information only, and can be deleted
+after import once you are satisfied with the results.)

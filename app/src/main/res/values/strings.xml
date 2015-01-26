@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, AppShareActivity!</string>
+    <string name="app_name">AppManager</string>
+
+	<!-- Common -->
+    <string name="sorting_by_name_asc">By name asc</string>
+    <string name="sorting_by_name_des">By name des</string>
+    <string name="sorting_by_size_asc">By size asc</string>
+    <string name="sorting_by_size_des">By size des</string>
+    <string name="sorting_by_date_asc">By install date asc</string>
+    <string name="sorting_by_date_des">By install date des</string>
+
+    <string name="filter_system">System</string>
+    <string name="filter_user">User</string>
+    <string name="filter_all">All</string>
+
+    <string name="close">Close</string>
+    <string name="delete">Delete</string>
+    <string name="ok">OK</string>
+    <string name="cancle">Cancel</string>
+    <string name="select_all">Select All</string>
+    <string name="select_clear">Clear Select</string>
+    <string name="uninstall">Uninstall</string>
+    <string name="install">Install</string>
+    <string name="refresh">Refresh</string>
+
+    <string name="list_empty">No data</string>
+
+    <string name="about">About</string>
+	<!-- End Common -->
+
+    <!-- AppShareActivity -->
+    <string name="title">Total - %d apps</string>
+
+    <string name="share_app">Share app</string>
+
+    <string name="menu_header_app">%s</string>
+    <string name="menu_setting">Setting</string>
+    <string name="menu_sorting">Sort</string>
+    <string name="menu_select_all">All select</string>
+    <string name="menu_select_clear">Clear select</string>
+    <string name="menu_filter">Filter</string>
+    <string name="menu_about">About</string>
+    <string name="menu_help">Help</string>
+    <string name="context_menu_share">Share</string>
+    <string name="context_menu_display">Display</string>
+    <string name="context_menu_uninstall">Uninstall</string>
+    <string name="context_menu_search">Search</string>
+    <string name="context_menu_export">Export</string>
+    <string name="context_menu_detail">Detail</string>
+
+    <string name="dialog_filter_title">Selecte show app</string>
+    <string name="dialog_sorting_title">Sorting type</string>
+    <string name="dialog_about_title">AppShare</string>
+    <string name="dialog_about_content">\n Author : LiChuan \n E-Mail : lichuanky@gmail.com \n</string>
+    <string name="dialog_progress_load_title">Loading app</string>
+    <string name="dialog_progress_load_content">Please wait while loading apps ...</string>
+    <string name="dialog_progress_export_title">Exporting app</string>
+    <string name="dialog_progress_export_content" formatted="false">Exporting %1$s , %2$d / %3$d</string>
+
+    <string name="export_app_success">Export success %s </string>
+    <string name="export_app_failed">Export failed %s </string>
+    <!-- End AppShareActivity -->
+
+    <!-- Setting Activity -->
+    <string name="setting_title">Setting</string>
+
+    <string name="setting_backup_dir">Backup dir</string>
+    <string name="setting_default_filter">Default show app type</string>
+    <string name="setting_default_sorting">Default sorting</string>
+    <string name="setting_default_item_click">Default item click event</string>
+    <string name="setting_format_export_name">Format export name</string>
+	<string name="setting_backedup_file">Backed up files list</string>
+	<string name="setting_highlight_not_installed">Highlight not installed</string>
+	<string name="setting_highlight_not_installed_summary">Highlight not installed with red color</string>
+    <!-- End Setting Activity -->
+
+    <!-- ApkFileManager Activity -->
+    <string name="apk_file_manager_title">Exported apps file manager</string>
+	<!-- End ApkFileManager Activity -->
+</resources>

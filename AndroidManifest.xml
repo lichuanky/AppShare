@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.jeffry.appshare"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <uses-sdk android:minSdkVersion="10" />
+
+    <application
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name" >
+        <activity
+            android:label="@string/app_name"
+            android:name=".AppShareActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan" >
+            <intent-filter >
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".ApkFileManager" android:label="@string/apk_file_manager_title" />
+		<activity android:name=".SettingActivity" android:label="@string/setting_title" />
+		<activity android:name=".AboutActivity" android:theme="@android:style/Theme.Dialog"/>
+		<activity android:name=".DirectorySelectActivity" android:theme="@android:style/Theme.Dialog" />
+    </application>
+
+</manifest>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <string-array name="app_filters">
+        <item>Show all app</item>
+        <item>Only show user app</item>
+        <item>Only show system app</item>
+    </string-array>
+    <string-array name="app_filters_value">
+		<item>all</item>
+		<item>user</item>
+		<item>system</item>
+    </string-array>
+
+    <string-array name="app_sortings">
+        <item>By name</item>
+        <item>By size</item>
+        <item>By installed date</item>
+        <item>By location</item>
+    </string-array>
+    <string-array name="app_sortings_value">
+		<item>name</item>
+		<item>size</item>
+		<item>date</item>
+		<item>location</item>
+    </string-array>
+
+    <string-array name="app_sortings_sub">
+        <item>des</item>
+        <item>asc</item>
+    </string-array>
+    <string-array name="app_sortings_sub_value">
+		<item>des</item>
+		<item>asc</item>
+    </string-array>
+
+    <string-array name="item_click_events">
+    	<item>Share</item>
+    	<item>Display</item>
+    	<item>Uninstall</item>
+    	<!--item>Search</item-->
+    	<item>Export</item>
+    	<item>Select</item>
+    </string-array>
+    <string-array name="item_click_events_value">
+    	<item>share</item>
+    	<item>display</item>
+    	<item>uninstall</item>
+    	<!--item>search</item-->
+    	<item>export</item>
+    	<item>select</item>
+    </string-array>
+
+    <string-array name="item_format_export_name">
+        <item>Application Name</item>
+        <item>Package Name</item>
+    </string-array>
+    <string-array name="item_format_export_name_value">
+        <item>appname</item>
+        <item>packagename</item>
+    </string-array>
+</resources>

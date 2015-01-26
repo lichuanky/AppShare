@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" >
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="/SDCARD/"
+        android:textSize="18sp"
+        android:visibility="gone" />
+
+    <ListView
+        android:id="@android:id/list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true" />
+
+	<LinearLayout
+	    android:id="@+id/bottom_area"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentBottom="true"
+	    android:background="#FF9A9A9A">
+
+	    <Button android:id="@+id/btn_ok"
+	        android:layout_width="0dip"
+	        android:layout_weight="1"
+	        android:layout_height="wrap_content"
+	        android:layout_margin="5dip"
+	        android:textSize="15sp"
+	        android:text="ok"/>
+
+	    <Button android:id="@+id/btn_cancle"
+	        android:layout_width="0dip"
+	        android:layout_weight="1"
+	        android:layout_height="wrap_content"
+	        android:layout_margin="5dip"
+	        android:textSize="15sp"
+	        android:text="cancel"/>
+	</LinearLayout>
+
+</RelativeLayout>

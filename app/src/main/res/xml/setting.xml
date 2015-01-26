@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+	android:title="@string/setting_title">
+	<PreferenceCategory android:title="@string/setting_title">
+	    <EditTextPreference
+	        android:key="backup_dir"
+	        android:title="@string/setting_backup_dir"
+	        android:defaultValue="/sdcard/apkbackup"
+	        android:summary="/sdcard/apkbackup"
+	        android:shouldDisableView="true" />
+	    <ListPreference
+	        android:key="default_filter"
+	        android:title="@string/setting_default_filter"
+	        android:entries="@array/app_filters"
+	        android:entryValues="@array/app_filters_value"
+	        android:defaultValue="user"
+	        android:summary="@string/filter_user" />
+	    <ListPreference
+	        android:key="default_sorting"
+	        android:title="@string/setting_default_sorting"
+	        android:entries="@array/app_sortings"
+	        android:entryValues="@array/app_sortings_value"
+	        android:defaultValue="date"
+	        android:summary="@string/sorting_by_date_asc" />
+	    <ListPreference
+	        android:key="default_item_click"
+	        android:title="@string/setting_default_item_click"
+	        android:entries="@array/item_click_events"
+	        android:entryValues="@array/item_click_events_value"
+	        android:summary="Display" />
+	    <ListPreference
+	        android:key="format_export_name"
+	        android:title="@string/setting_format_export_name"
+	        android:entries="@array/item_format_export_name"
+	        android:entryValues="@array/item_format_export_name_value"
+	        android:summary="format export app name" />
+
+		<PreferenceScreen
+			android:key="backedup_files"
+			android:title="@string/setting_backedup_file">
+			<intent android:action="android.intent.action.MAIN"
+                    android:targetPackage="com.jeffry.appshare"
+                    android:targetClass="com.jeffry.appshare.ApkFileManager" />
+		</PreferenceScreen>
+
+		<CheckBoxPreference
+		    android:key="highlight_not_installed"
+		    android:title="@string/setting_highlight_not_installed"
+		    android:defaultValue="true"
+		    android:persistent="true"
+		    android:summary="@string/setting_highlight_not_installed_summary" />
+	</PreferenceCategory>
+
+	<PreferenceCategory android:title="@string/about">
+		<PreferenceScreen
+			android:title="@string/about">
+			<intent android:action="android.intent.action.MAIN"
+                    android:targetPackage="com.jeffry.appshare"
+                    android:targetClass="com.jeffry.appshare.AboutActivity" />
+		</PreferenceScreen>
+	</PreferenceCategory>
+</PreferenceScreen>
