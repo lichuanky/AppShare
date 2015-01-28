@@ -32,7 +32,7 @@ public class DirectorySelectActivity extends ListActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.directory_select);
+        setContentView(R.layout.activity_directory_select);
         mBtnOk = (Button) findViewById(R.id.btn_ok);
         mBtnOk.setOnClickListener(new OnClickListener() {
             @Override

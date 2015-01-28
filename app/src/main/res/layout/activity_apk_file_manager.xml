@@ -16,6 +16,6 @@
         android:layout_height="fill_parent"
         android:textSize="18sp"
         android:text="No APP"
-        android:gravity="center"/>"
+        android:gravity="center"/>
 
 </RelativeLayout>

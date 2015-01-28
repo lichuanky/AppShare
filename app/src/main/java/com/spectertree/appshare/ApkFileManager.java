@@ -107,7 +107,7 @@ public class ApkFileManager extends ListActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.apk_file_manager);
+        setContentView(R.layout.activity_apk_file_manager);
 
         mPrefs = PreferenceManager.getDefaultSharedPreferences(this);
 

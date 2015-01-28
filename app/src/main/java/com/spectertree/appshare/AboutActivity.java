@@ -6,7 +6,9 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 
-public class AboutActivity extends Activity {
+import com.spectertree.appshare.base.BaseActivity;
+
+public class AboutActivity extends BaseActivity {
 
     private static final int DIALOG_ABOUT = 32;
 
