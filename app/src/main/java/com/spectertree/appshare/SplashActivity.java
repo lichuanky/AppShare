@@ -1,5 +1,6 @@
 package com.spectertree.appshare;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -27,7 +28,7 @@ public class SplashActivity extends BaseActivity {
     private int staus = 0;
 
     private static final int STOPSPLASH = 0;
-    private static final long SPLASHTIME = 1000;
+    private static final long SPLASHTIME = 3 * 1000;
 
     private View mSplashView;
     private TextView tv;
@@ -39,12 +40,13 @@ public class SplashActivity extends BaseActivity {
         public void handleMessage(Message msg) {
             switch (msg.what) {
                 case STOPSPLASH:
-                    if( staus == 1 ){
+                    /*if( staus == 1 ){
                         mSplashView.startAnimation(mAnimationGone);
                         mSplashView.setVisibility(View.GONE);
                         break;
                     }
-                    sendEmptyMessageDelayed(STOPSPLASH, SPLASHTIME);
+                    sendEmptyMessageDelayed(STOPSPLASH, SPLASHTIME);*/
+                    startActivity(new Intent(SplashActivity.this, AppShareActivity.class));
             }
             super.handleMessage(msg);
         }
@@ -53,15 +55,14 @@ public class SplashActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().requestFeature(Window.FEATURE_PROGRESS);
-        setContentView(R.layout.main);
+        setContentView(R.layout.activity_splash);
         mAnimationGone = AnimationUtils.loadAnimation(this,R.anim.alpha_gone);
         mAnimation_Alpha = AnimationUtils.loadAnimation(this, R.anim.alpha_action);
 
         mSplashView = findViewById(R.id.splash_ll);
         tv = (TextView) findViewById(R.id.info_tv);
         tv.setText("正在建立数据连接");
-        mSplashView.startAnimation(mAnimation_Alpha);
+        //mSplashView.startAnimation(mAnimation_Alpha);
 
         Message msg = new Message();
         msg.what = STOPSPLASH;
