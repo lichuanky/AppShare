@@ -4,5 +4,6 @@
     <color name="red">#ff0000</color>
     <color name="balck">#ffffffff</color>
     <color name="transparent">#00000000</color>
+    <color name="blue_base">#33B5E5</color>
 
 </resources>

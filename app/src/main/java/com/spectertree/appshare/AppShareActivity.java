@@ -132,7 +132,7 @@ public class AppShareActivity extends ListActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
+        setContentView(R.layout.activity_app_share);
         findViewById(R.id.search_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -384,7 +384,7 @@ public class AppShareActivity extends ListActivity {
         if (itemClickEvent.equals("share")) {
             shareApp(ai);
         } else if (itemClickEvent.equals("display")) {
-            displayApp(ai);
+            //0displayApp(ai);
         } else if (itemClickEvent.equals("uninstall")) {
             uninstallApp(ai);
         } else if (itemClickEvent.equals("export")) {

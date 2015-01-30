@@ -68,7 +68,7 @@ public class AppAdapter extends BaseAdapter {
     public View getView(final int position, View convertView, ViewGroup parent) {
         ItemViewHolder holder;
         if (convertView == null) {
-            convertView = mInflater.inflate(R.layout.list_item, null);
+            convertView = mInflater.inflate(R.layout.item_app, null);
             holder = new ItemViewHolder();
             holder.appIcon = (ImageView) convertView.findViewById(R.id.app_icon);
             holder.appNameText = (TextView) convertView.findViewById(R.id.app_name_text);

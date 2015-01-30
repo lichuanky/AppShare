@@ -87,7 +87,7 @@ public class AppListAdapter extends ArrayAdapter<AppInfoData> {
     public View getView(final int position, View convertView, ViewGroup parent) {
     	ItemViewHolder1 holder;
     	if (convertView == null) {
-    		convertView = mInflater.inflate(R.layout.list_item, null);
+    		convertView = mInflater.inflate(R.layout.item_app, null);
     		holder = new ItemViewHolder1();
     		holder.appIcon = (ImageView) convertView.findViewById(R.id.app_icon);
     		holder.appNameText = (TextView) convertView.findViewById(R.id.app_name_text);
