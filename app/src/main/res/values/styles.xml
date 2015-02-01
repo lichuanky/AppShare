@@ -22,7 +22,7 @@
         <item name="android:windowAnimationStyle">@style/AnimationActivity</item>
     </style>
 
-    <style name="ThemeActivity" mce_bogus="1">
+    <style name="ThemeActivity" mce_bogus="1" parent="Sherlock.__Theme">
         <item name="android:windowAnimationStyle">@style/AnimationActivity</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:screenOrientation">portrait</item>

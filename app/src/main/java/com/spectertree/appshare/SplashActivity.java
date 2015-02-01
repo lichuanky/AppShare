@@ -1,5 +1,6 @@
 package com.spectertree.appshare;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -16,8 +17,8 @@ import com.spectertree.appshare.base.BaseActivity;
 /**
  * Created by lichuan on 15/1/27.
  */
-public class SplashActivity extends BaseActivity {
-    private static final String TAG = "WebGameActivity";
+public class SplashActivity extends Activity {
+    private static final String TAG = "SplashActivity";
 
     private final int SPLASH_DISPLAY_LENGTH = 3 * 1000;
 

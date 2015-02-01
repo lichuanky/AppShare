@@ -8,7 +8,6 @@ import java.util.List;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.app.ListActivity;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -25,7 +24,6 @@ import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.ContextMenu;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ContextMenu.ContextMenuInfo;
@@ -35,11 +33,13 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.actionbarsherlock.app.SherlockListActivity;
+import com.actionbarsherlock.view.SubMenu;
 import com.spectertree.appshare.adapter.AppListAdapter;
 import com.spectertree.appshare.model.AppInfoData;
 import com.spectertree.appshare.util.Utils;
 
-public class AppShareActivity extends ListActivity {
+public class AppShareActivity extends SherlockListActivity {
     private static final String TAG = AppShareActivity.class.getSimpleName();
 
     private static final int LIST_ALL_APP = 0;
@@ -132,6 +132,7 @@ public class AppShareActivity extends ListActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setContentView(R.layout.activity_app_share);
         findViewById(R.id.search_button).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -227,21 +228,24 @@ public class AppShareActivity extends ListActivity {
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-//        menu.add(0, MENU_FILTER, 0, R.string.menu_filter);
-        menu.add(0, MENU_SORTING, 0, R.string.menu_sorting).setIcon(R.drawable.ic_menu_sort_alphabetically);
-        menu.add(0, MENU_SELECT_ALL, 0, R.string.menu_select_all).setIcon(R.drawable.ic_menu_agenda);
-        menu.add(0, MENU_SETTING, 4, R.string.menu_setting).setIcon(R.drawable.ic_menu_preferences);
-//        menu.add(0, MENU_ABOUT, 5, R.string.menu_about).setIcon(R.drawable.ic_menu_info_details);
-        menu.add(0, MENU_SELECT_CLEAR, 1, R.string.menu_select_clear).setIcon(R.drawable.ic_menu_clear_playlist);
-        menu.add(0, MENU_UNINSTALL, 2, R.string.uninstall).setIcon(android.R.drawable.ic_menu_delete);
-        menu.add(0, MENU_REFRESH, 3, R.string.refresh).setIcon(R.drawable.ic_menu_refresh);
+    public boolean onCreateOptionsMenu(com.actionbarsherlock.view.Menu menu) {
+        SubMenu sub = menu.addSubMenu("menu");
+        sub.add(0, MENU_FILTER, 0, R.string.menu_filter).setIcon(R.drawable.ic_menu_sort_by_size);
+        sub.add(0, MENU_SORTING, 0, R.string.menu_sorting).setIcon(R.drawable.ic_menu_sort_alphabetically);
+        sub.add(0, MENU_SELECT_ALL, 0, R.string.menu_select_all).setIcon(R.drawable.ic_menu_agenda);
+        sub.add(0, MENU_SETTING, 4, R.string.menu_setting).setIcon(R.drawable.ic_menu_preferences);
+        // menu.add(0, MENU_ABOUT, 5, R.string.menu_about).setIcon(R.drawable.ic_menu_info_details);
+        sub.add(0, MENU_SELECT_CLEAR, 1, R.string.menu_select_clear).setIcon(R.drawable.ic_menu_clear_playlist);
+        sub.add(0, MENU_UNINSTALL, 2, R.string.uninstall).setIcon(android.R.drawable.ic_menu_delete);
+        sub.add(0, MENU_REFRESH, 3, R.string.refresh).setIcon(R.drawable.ic_menu_refresh);
+        sub.getItem().setShowAsAction(com.actionbarsherlock.view.MenuItem.SHOW_AS_ACTION_ALWAYS
+                | com.actionbarsherlock.view.MenuItem.SHOW_AS_ACTION_WITH_TEXT);
 
         return super.onCreateOptionsMenu(menu);
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(com.actionbarsherlock.view.MenuItem item) {
         switch(item.getItemId()) {
             case MENU_FILTER:
                 showDialog(DIALOG_FILTER);

@@ -1,5 +1,6 @@
 package com.spectertree.appshare;
 
+import com.actionbarsherlock.app.SherlockPreferenceActivity;
 import com.spectertree.appshare.util.Utils;
 
 import android.app.Activity;
@@ -14,7 +15,7 @@ import android.preference.PreferenceManager;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.Preference.OnPreferenceClickListener;
 
-public class SettingActivity extends PreferenceActivity {
+public class SettingActivity extends SherlockPreferenceActivity {
 
     private SharedPreferences mPreferences;
 

@@ -20,12 +20,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AppShareActivity" />
+        <activity
+            android:name=".AppShareActivity"
+            android:theme="@style/Theme.Sherlock"/>
         <activity
             android:name="com.spectertree.appshare.ApkFileManager"
+            android:theme="@style/ThemeActivity"
             android:label="@string/apk_file_manager_title" />
         <activity
             android:name="com.spectertree.appshare.SettingActivity"
+            android:theme="@style/ThemeActivity"
             android:label="@string/setting_title" />
         <activity
             android:name="com.spectertree.appshare.AboutActivity"
