@@ -21,18 +21,18 @@ public class AboutActivity extends BaseActivity {
     @Override
     protected Dialog onCreateDialog(int id) {
         AlertDialog dialog = null;
-        switch(id) {
+        switch (id) {
             case DIALOG_ABOUT:
                 dialog = new AlertDialog.Builder(this)
-                .setIcon(android.R.drawable.ic_dialog_info)
-                .setTitle(R.string.dialog_about_title)
-                .setMessage(R.string.dialog_about_content)
-                .setNeutralButton(R.string.close, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        finish();
-                    }
-                }).create();
+                        .setIcon(android.R.drawable.ic_dialog_info)
+                        .setTitle(R.string.dialog_about_title)
+                        .setMessage(R.string.dialog_about_content)
+                        .setNeutralButton(R.string.close, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                finish();
+                            }
+                        }).create();
                 return dialog;
         }
         return super.onCreateDialog(id);

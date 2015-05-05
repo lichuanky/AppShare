@@ -53,7 +53,7 @@ public class ApkFileManager extends ListActivity {
 
     private Thread mThreadScanApk = new Thread() {
         public void run() {
-        	Log.d(TAG, "start to scan apk.");
+            Log.d(TAG, "start to scan apk.");
             String sourceDir = mPrefs.getString(Utils.Setting.KEY_BAKCUP_DIR,
                     Utils.Setting.DEFAULT_BACKUP_DIR);
             try {
@@ -73,7 +73,7 @@ public class ApkFileManager extends ListActivity {
                     mAppInfoList.add(ai);
             }
             if (mAdapter == null) {
-            	mAdapter = new AppListAdapter(ApkFileManager.this, mAppInfoList, false);
+                mAdapter = new AppListAdapter(ApkFileManager.this, mAppInfoList, false);
                 mHandler.sendEmptyMessage(MSG_CREATE_LIST);
             } else {
                 mHandler.sendEmptyMessage(MSG_UPDATE_LIST);
@@ -134,17 +134,17 @@ public class ApkFileManager extends ListActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch(item.getItemId()) {
+        switch (item.getItemId()) {
             case MENU_DELETE:
                 List<AppInfoData> removeApps = new ArrayList<AppInfoData>();
                 List<File> removeFiles = new ArrayList<File>();
                 for (int i : mAdapter.mMap.keySet()) {
-                	if (mAdapter.mMap.get(i)) {
-                		mFileList.get(i).delete();
+                    if (mAdapter.mMap.get(i)) {
+                        mFileList.get(i).delete();
                         removeFiles.add(mFileList.get(i));
                         removeApps.add(mAppInfoList.get(i));
                         mAdapter.mMap.put(i, false);
-                	}
+                    }
                 }
                 mFileList.remove(removeFiles);
                 mAppInfoList.removeAll(removeApps);
@@ -152,31 +152,31 @@ public class ApkFileManager extends ListActivity {
                 break;
             case MENU_SELECT_ALL:
                 for (int i : mAdapter.mMap.keySet()) {
-                	mAdapter.mMap.put(i, true);
+                    mAdapter.mMap.put(i, true);
                 }
                 mAdapter.notifyDataSetChanged();
                 break;
             case MENU_SELECT_CLEAR:
                 for (int i : mAdapter.mMap.keySet()) {
-                	mAdapter.mMap.put(i, false);
+                    mAdapter.mMap.put(i, false);
                 }
                 mAdapter.notifyDataSetChanged();
                 break;
             case MENU_INSTALL:
                 Intent in = new Intent(Intent.ACTION_VIEW);
                 for (int i : mAdapter.mMap.keySet()) {
-                	if (mAdapter.mMap.get(i)) {
+                    if (mAdapter.mMap.get(i)) {
                         in.setDataAndType(Uri.fromFile(mFileList.get(i)),
                                 Utils.Constants.MIME_APP);
                         startActivity(in);
                         mAdapter.mMap.put(i, false);
-                	}
+                    }
                 }
                 mAdapter.notifyDataSetChanged();
                 break;
             case MENU_SETTING:
                 startActivityForResult(new Intent(this, SettingActivity.class), Utils.Constants.REQ_SYSTEM_SETTINGS);
-            	break;
+                break;
             case MENU_SORTING:
                 showDialog(DIALOG_SORTING);
                 break;
@@ -187,7 +187,7 @@ public class ApkFileManager extends ListActivity {
     @Override
     protected Dialog onCreateDialog(int id) {
         AlertDialog dialog = null;
-        switch(id) {
+        switch (id) {
             case DIALOG_SORTING:
                 dialog = new AlertDialog.Builder(this)
                         .setIcon(android.R.drawable.ic_dialog_alert)
@@ -195,6 +195,7 @@ public class ApkFileManager extends ListActivity {
                         .setSingleChoiceItems(R.array.app_sortings, 0,
                                 new DialogInterface.OnClickListener() {
                                     String[] sortTypes = getResources().getStringArray(R.array.app_sortings_value);
+
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
                                         Utils.changeSort(mAppInfoList, sortTypes[which]);
@@ -213,7 +214,7 @@ public class ApkFileManager extends ListActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        switch(requestCode) {
+        switch (requestCode) {
             case Utils.Constants.REQ_SYSTEM_SETTINGS:
                 if (resultCode == Activity.RESULT_OK) {
                     String apkFilesDir = data.getStringExtra(Utils.Setting.KEY_BAKCUP_DIR);

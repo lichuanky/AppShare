@@ -57,7 +57,7 @@ public class SplashActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-        mAnimationGone = AnimationUtils.loadAnimation(this,R.anim.alpha_gone);
+        mAnimationGone = AnimationUtils.loadAnimation(this, R.anim.alpha_gone);
         mAnimation_Alpha = AnimationUtils.loadAnimation(this, R.anim.alpha_action);
 
         mSplashView = findViewById(R.id.splash_ll);

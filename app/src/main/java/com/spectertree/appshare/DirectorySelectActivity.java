@@ -70,7 +70,7 @@ public class DirectorySelectActivity extends ListActivity {
         mCurrentDirectory = mCurrentDirectory + "/" + mDirectoryList.get(position);
         File[] files = (new File(mCurrentDirectory)).listFiles();
         if (files.length > 0)
-        updateDirectoryList(mDirectoryList, mCurrentDirectory);
+            updateDirectoryList(mDirectoryList, mCurrentDirectory);
         mAdapter.notifyDataSetChanged();
         setTitle(mCurrentDirectory);
     }

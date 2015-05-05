@@ -73,10 +73,10 @@ public class Utils {
 
     public static String getAppSize(ApplicationInfo ai) {
         File file = new File(ai.sourceDir);
-        float tmpSize = file.length()/1024f;
+        float tmpSize = file.length() / 1024f;
         String appSize = "";
         if (tmpSize > 1024f) {
-            appSize = new DecimalFormat("#.##").format(tmpSize/1024f) + "MB";
+            appSize = new DecimalFormat("#.##").format(tmpSize / 1024f) + "MB";
         } else {
             appSize = new DecimalFormat("#.##").format(tmpSize) + "KB";
         }
@@ -85,10 +85,10 @@ public class Utils {
     }
 
     public static String getFormatAppSize(long fileSize) {
-        float tmpSize = fileSize/1024f;
+        float tmpSize = fileSize / 1024f;
         String appSize = "";
         if (tmpSize > 1024f) {
-            appSize = new DecimalFormat("#.##").format(tmpSize/1024f) + "MB";
+            appSize = new DecimalFormat("#.##").format(tmpSize / 1024f) + "MB";
         } else {
             appSize = new DecimalFormat("#.##").format(tmpSize) + "KB";
         }
@@ -105,16 +105,16 @@ public class Utils {
         List<File> mFileList = new ArrayList<File>();
         File[] file = (new File(sourceDir)).listFiles();
 
-		if (file != null) {
-			for (int i = 0; i < file.length; i++) {
-				if (file[i].isFile() && file[i].getName().contains("." + type)) {
-					mFileList.add(file[i]);
-				}
-				if (file[i].isDirectory()) {
-					mFileList.addAll(getFiles(file[i].getPath(), type));
-				}
-			}
-		}
+        if (file != null) {
+            for (int i = 0; i < file.length; i++) {
+                if (file[i].isFile() && file[i].getName().contains("." + type)) {
+                    mFileList.add(file[i]);
+                }
+                if (file[i].isDirectory()) {
+                    mFileList.addAll(getFiles(file[i].getPath(), type));
+                }
+            }
+        }
 
         return mFileList;
     }
@@ -168,26 +168,26 @@ public class Utils {
             //从pkgParserCls类得到parsePackage方法
             DisplayMetrics metrics = new DisplayMetrics();
             metrics.setToDefaults();//这个是与显示有关的, 这边使用默认
-            typeArgs = new Class<?>[]{File.class,String.class,
-                                    DisplayMetrics.class,int.class};
+            typeArgs = new Class<?>[]{File.class, String.class,
+                    DisplayMetrics.class, int.class};
             Method pkgParser_parsePackageMtd = pkgParserCls.getDeclaredMethod(
                     "parsePackage", typeArgs);
 
-            valueArgs=new Object[]{new File(apkPath),apkPath,metrics,0};
+            valueArgs = new Object[]{new File(apkPath), apkPath, metrics, 0};
 
             //执行pkgParser_parsePackageMtd方法并返回
             Object pkgParserPkg = pkgParser_parsePackageMtd.invoke(pkgParser,
                     valueArgs);
 
             //从返回的对象得到名为"applicationInfo"的字段对象
-            if (pkgParserPkg==null) {
+            if (pkgParserPkg == null) {
                 return null;
             }
             Field appInfoFld = pkgParserPkg.getClass().getDeclaredField(
                     "applicationInfo");
 
             //从对象"pkgParserPkg"得到字段"appInfoFld"的值
-            if (appInfoFld.get(pkgParserPkg)==null) {
+            if (appInfoFld.get(pkgParserPkg) == null) {
                 return null;
             }
             ApplicationInfo info = (ApplicationInfo) appInfoFld
@@ -223,7 +223,7 @@ public class Utils {
 
             // 读取apk文件的信息
             appInfoData = new AppInfoData();
-            if (info!=null) {
+            if (info != null) {
                 if (info.icon != 0) {// 图片存在，则读取相关信息
                     Drawable icon = res.getDrawable(info.icon);// 图标
                     appInfoData.setAppicon(icon);
@@ -235,12 +235,12 @@ public class Utils {
 //                    String neme = (String) res.getText(info.labelRes);// 名字
 //                    appInfoData.setAppname(neme);
 //                }else {
-                    String apkName=apkFile.getName();
-                    appInfoData.setAppname(apkName.substring(0,apkName.lastIndexOf(".")));
+                String apkName = apkFile.getName();
+                appInfoData.setAppname(apkName.substring(0, apkName.lastIndexOf(".")));
 //                }
                 String pkgName = info.packageName;// 包名
                 appInfoData.setApppackagename(pkgName);
-            }else {
+            } else {
                 return null;
             }
             PackageManager pm = ctx.getPackageManager();
@@ -289,7 +289,7 @@ public class Utils {
     /**
      * Copy dir and content from source to target
      *
-     * @param sourceDirTAG
+     * @param sourceDir
      * @param targetDir
      * @throws IOException
      */
@@ -328,13 +328,13 @@ public class Utils {
                             result = 0;*/
                         //result = lhs.getAppname().compareTo(rhs.getAppname());
                     } else if (type.equals("size")) {
-                        Long l = (Long)(lhs.getAppsize() - rhs.getAppsize());
+                        Long l = lhs.getAppsize() - rhs.getAppsize();
                         result = l.intValue();
                     } else if (type.equals("date")) {
                         result = lhs.getAppdate().compareTo(rhs.getAppdate());
                     } else if (type.equals("location")) {
-                        result = (lhs.getAppflags()&ApplicationInfo.FLAG_EXTERNAL_STORAGE) -
-                                (rhs.getAppflags()&ApplicationInfo.FLAG_EXTERNAL_STORAGE);
+                        result = (lhs.getAppflags() & ApplicationInfo.FLAG_EXTERNAL_STORAGE) -
+                                (rhs.getAppflags() & ApplicationInfo.FLAG_EXTERNAL_STORAGE);
                     }
                     return result;
                 }

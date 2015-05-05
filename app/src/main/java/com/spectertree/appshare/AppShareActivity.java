@@ -104,7 +104,7 @@ public class AppShareActivity extends SherlockListActivity {
         public void handleMessage(Message msg) {
             switch (msg.what) {
                 case MSG_CREATE_LIST:
-                	mAdapter = new AppListAdapter(AppShareActivity.this, mAppList);
+                    mAdapter = new AppListAdapter(AppShareActivity.this, mAppList);
                     setListAdapter(mAdapter);
                     setTitle(getString(R.string.title, mAppList.size()));
                     if (mProgressDialog.isShowing()) {
@@ -137,7 +137,7 @@ public class AppShareActivity extends SherlockListActivity {
         findViewById(R.id.search_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((EditText)findViewById(R.id.search_text)).setText("");
+                ((EditText) findViewById(R.id.search_text)).setText("");
             }
         });
         findViewById(R.id.setting_button).setOnClickListener(new OnClickListener() {
@@ -152,7 +152,7 @@ public class AppShareActivity extends SherlockListActivity {
             public void onClick(View v) {
                 List<AppInfoData> list = new ArrayList<AppInfoData>();
                 if (mAdapter.mMap.containsValue(true)) {
-                    for(Integer i : mAdapter.mMap.keySet()) {
+                    for (Integer i : mAdapter.mMap.keySet()) {
                         if (mAdapter.mMap.get(i)) {
                             list.add(mAppList.get(i));
                             mAdapter.mMap.put(i, false);
@@ -246,7 +246,7 @@ public class AppShareActivity extends SherlockListActivity {
 
     @Override
     public boolean onOptionsItemSelected(com.actionbarsherlock.view.MenuItem item) {
-        switch(item.getItemId()) {
+        switch (item.getItemId()) {
             case MENU_FILTER:
                 showDialog(DIALOG_FILTER);
                 break;
@@ -271,7 +271,7 @@ public class AppShareActivity extends SherlockListActivity {
                 break;
             case MENU_UNINSTALL:
                 if (mAdapter.mMap.containsValue(true)) {
-                    for(Integer i : mAdapter.mMap.keySet()) {
+                    for (Integer i : mAdapter.mMap.keySet()) {
                         if (mAdapter.mMap.get(i)) {
                             uninstallApp(mAppList.get(i));
                             mAdapter.mMap.put(i, false);
@@ -298,7 +298,7 @@ public class AppShareActivity extends SherlockListActivity {
         menu.add(0, CONTEXT_MENU_EXPORT, 0, R.string.context_menu_export);
         menu.add(0, CONTEXT_MENU_DETAIL, 0, R.string.context_menu_detail);
 
-        AppInfoData ai = mAppList.get(((AdapterView.AdapterContextMenuInfo)menuInfo).position);
+        AppInfoData ai = mAppList.get(((AdapterView.AdapterContextMenuInfo) menuInfo).position);
         menu.setHeaderTitle(getString(R.string.menu_header_app, ai.getAppname()));
         menu.setHeaderIcon(ai.getAppicon());
         super.onCreateContextMenu(menu, v, menuInfo);
@@ -307,9 +307,9 @@ public class AppShareActivity extends SherlockListActivity {
     @Override
     public boolean onContextItemSelected(MenuItem item) {
         AdapterView.AdapterContextMenuInfo menuInfo;
-        menuInfo =(AdapterView.AdapterContextMenuInfo)item.getMenuInfo();
+        menuInfo = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
         AppInfoData ai = mAppList.get(menuInfo.position);
-        switch(item.getItemId()) {
+        switch (item.getItemId()) {
             case CONTEXT_MENU_SHARE:
                 shareApp(ai);
                 break;
@@ -331,21 +331,7 @@ public class AppShareActivity extends SherlockListActivity {
                 }
                 break;
             case CONTEXT_MENU_DETAIL:
-                Intent intent = new Intent();
-                final int apiLevel = Build.VERSION.SDK_INT;
-                if (apiLevel >= 9) { // 2.3（ApiLevel 9）以上，使用SDK提供的接口
-                    intent.setAction("android.settings.APPLICATION_DETAILS_SETTINGS");
-                    Uri uri = Uri.fromParts("package", ai.getApppackagename(), null);
-                    intent.setData(uri);
-                } else { // Blow 2.3 ，use not public interface
-                         // 2.2 and 2.1，InstalledAppDetails use the differen APP_PKG_NAME。
-                    final String appPkgName = (apiLevel == 8 ? "pkg" :
-                        "com.android.settings.ApplicationPkgName");
-                    intent.setAction(Intent.ACTION_VIEW);
-                    intent.setClassName("com.android.settings", "com.android.settings.InstalledAppDetails");
-                    intent.putExtra(appPkgName, ai.getApppackagename());
-                }
-                startActivity(intent);
+                showAppDetail(ai);
             default:
                 break;
         }
@@ -371,7 +357,7 @@ public class AppShareActivity extends SherlockListActivity {
                     mFilterType = filter;
                     filterByInstallType(filter);
                 }
-                if (!TextUtils.isEmpty(sorting)){
+                if (!TextUtils.isEmpty(sorting)) {
                     mSortingType = sorting;
                     Utils.changeSort(mAppList, mSortingType);
                 }
@@ -388,7 +374,8 @@ public class AppShareActivity extends SherlockListActivity {
         if (itemClickEvent.equals("share")) {
             shareApp(ai);
         } else if (itemClickEvent.equals("display")) {
-            //0displayApp(ai);
+            // displayApp(ai);
+            showAppDetail(ai);
         } else if (itemClickEvent.equals("uninstall")) {
             uninstallApp(ai);
         } else if (itemClickEvent.equals("export")) {
@@ -412,6 +399,7 @@ public class AppShareActivity extends SherlockListActivity {
                                 R.array.app_filters, 0,
                                 new DialogInterface.OnClickListener() {
                                     String[] filterTypes = getResources().getStringArray(R.array.app_filters_value);
+
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
                                         mFilterType = filterTypes[which];
@@ -427,6 +415,7 @@ public class AppShareActivity extends SherlockListActivity {
                         .setSingleChoiceItems(R.array.app_sortings, 0,
                                 new DialogInterface.OnClickListener() {
                                     String[] sortTypes = getResources().getStringArray(R.array.app_sortings_value);
+
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
                                         mSortingType = sortTypes[which];
@@ -450,27 +439,27 @@ public class AppShareActivity extends SherlockListActivity {
         List<AppInfoData> appList = new ArrayList<AppInfoData>();
         AppInfoData appInfoData = null;
         for (PackageInfo pi : list) {
-        	appInfoData = new AppInfoData();
-        	appInfoData.setAppdate(new Date((new File(pi.applicationInfo.sourceDir)).lastModified()));
-        	appInfoData.setAppdatasize((new File(pi.applicationInfo.dataDir)).length());
-        	appInfoData.setAppSourcedir(pi.applicationInfo.sourceDir);
-        	appInfoData.setAppicon(pi.applicationInfo.loadIcon(mPackageManager));
-        	appInfoData.setAppname(pi.applicationInfo.loadLabel(mPackageManager).toString());
-        	appInfoData.setApppackagename(pi.applicationInfo.packageName);
-        	appInfoData.setAppsize((new File(pi.applicationInfo.sourceDir)).length());
-        	appInfoData.setAppflags(pi.applicationInfo.flags);
-        	appInfoData.setAppversion(pi.versionName);
-			appInfoData.setAppversioncode(pi.versionCode);
-			appList.add(appInfoData);
+            appInfoData = new AppInfoData();
+            appInfoData.setAppdate(new Date((new File(pi.applicationInfo.sourceDir)).lastModified()));
+            appInfoData.setAppdatasize((new File(pi.applicationInfo.dataDir)).length());
+            appInfoData.setAppSourcedir(pi.applicationInfo.sourceDir);
+            appInfoData.setAppicon(pi.applicationInfo.loadIcon(mPackageManager));
+            appInfoData.setAppname(pi.applicationInfo.loadLabel(mPackageManager).toString());
+            appInfoData.setApppackagename(pi.applicationInfo.packageName);
+            appInfoData.setAppsize((new File(pi.applicationInfo.sourceDir)).length());
+            appInfoData.setAppflags(pi.applicationInfo.flags);
+            appInfoData.setAppversion(pi.versionName);
+            appInfoData.setAppversioncode(pi.versionCode);
+            appList.add(appInfoData);
         }
         if (type == LIST_USER_APP) {
             for (AppInfoData ai : appList) {
-                if ((ai.getAppflags()&ApplicationInfo.FLAG_SYSTEM)==0)
+                if ((ai.getAppflags() & ApplicationInfo.FLAG_SYSTEM) == 0)
                     subList.add(ai);
             }
         } else if (type == LIST_SYSTEM_APP) {
             for (AppInfoData ai : appList) {
-                if ((ai.getAppflags()&ApplicationInfo.FLAG_SYSTEM)!=0)
+                if ((ai.getAppflags() & ApplicationInfo.FLAG_SYSTEM) != 0)
                     subList.add(ai);
             }
         } else if (type == LIST_ALL_APP) {
@@ -562,6 +551,24 @@ public class AppShareActivity extends SherlockListActivity {
 
     private void displayApp(AppInfoData ai) {
         Intent intent = mPackageManager.getLaunchIntentForPackage(ai.getApppackagename());
+        startActivity(intent);
+    }
+
+    private void showAppDetail(AppInfoData ai) {
+        Intent intent = new Intent();
+        final int apiLevel = Build.VERSION.SDK_INT;
+        if (apiLevel >= 9) { // 2.3（ApiLevel 9）以上，使用SDK提供的接口
+            intent.setAction("android.settings.APPLICATION_DETAILS_SETTINGS");
+            Uri uri = Uri.fromParts("package", ai.getApppackagename(), null);
+            intent.setData(uri);
+        } else { // Blow 2.3 ，use not public interface
+            // 2.2 and 2.1，InstalledAppDetails use the differen APP_PKG_NAME。
+            final String appPkgName = (apiLevel == 8 ? "pkg" :
+                    "com.android.settings.ApplicationPkgName");
+            intent.setAction(Intent.ACTION_VIEW);
+            intent.setClassName("com.android.settings", "com.android.settings.InstalledAppDetails");
+            intent.putExtra(appPkgName, ai.getApppackagename());
+        }
         startActivity(intent);
     }
 

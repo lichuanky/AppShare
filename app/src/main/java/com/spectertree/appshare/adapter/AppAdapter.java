@@ -36,7 +36,7 @@ public class AppAdapter extends BaseAdapter {
         mPackageManager = context.getPackageManager();
         if (mMap == null) {
             mMap = new HashMap<Integer, Boolean>(list.size());
-            for(int i = 0; i < list.size(); i++){
+            for (int i = 0; i < list.size(); i++) {
                 mMap.put(i, false);
             }
         }
@@ -59,6 +59,7 @@ public class AppAdapter extends BaseAdapter {
         TextView appSizeText;
         CheckBox checkbox;
     }
+
     @Override
     public long getItemId(int position) {
         return position;
@@ -87,7 +88,7 @@ public class AppAdapter extends BaseAdapter {
         holder.checkbox.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                mMap.put(position, ((CheckBox)v).isChecked());
+                mMap.put(position, ((CheckBox) v).isChecked());
             }
         });
         holder.checkbox.setChecked(mMap.get(position));
